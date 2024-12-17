@@ -1,0 +1,42 @@
+/* Animação de Fade In */
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Efeito de Zoom In */
+.zoom-in {
+    animation: zoomIn 0.5s ease-out;
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Efeito de Glow ao passar o mouse */
+.hover-glow:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Efeito de Hover nos links */
+a:hover {
+    color: #10b981;
+    text-decoration: underline;
+}
+
+/* Animando transições de cores */
+a {
+    transition: color 0.3s ease-in-out;
+}
+
+/* Layout Responsivo */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

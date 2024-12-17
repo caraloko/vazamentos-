@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - Natal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Navegação fixa */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            color: #10b981;
+        }
+
+        /* Tema de Natal */
+        body {
+            background-color: #1a202c;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .header-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            color: #ff4040;
+        }
+
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            font-size: 24px;
+            color: #fff;
+            opacity: 0.8;
+            animation: snow 10s linear infinite;
+        }
+
+        @keyframes snow {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Estilo de Cards de Download */
+        .download-card {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.6), rgba(255, 123, 0, 0.6));
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            color: white;
+            text-align: center;
+        }
+
+        .download-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-card img {
+            border: 2px solid #fff;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+            background: linear-gradient(90deg, #10b981, #16a34a);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .download-button:hover {
+            transform: scale(1.05);
+            background-color: #059669;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-text {
+                font-size: 4rem;
+            }
+            .grid-cols-1 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação -->
+    <div class="nav-bar">
+        <a href="index.html">Início</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="vazamentos.html">Vazamentos</a>
+    </div>
+
+    <!-- Efeitos de Neve -->
+    <div class="snowflakes" aria-hidden="true">
+        <span class="snowflake" style="left: 10%; animation-duration: 12s;">❄️</span>
+        <span class="snowflake" style="left: 25%; animation-duration: 8s;">❄️</span>
+        <span class="snowflake" style="left: 50%; animation-duration: 15s;">❄️</span>
+        <span class="snowflake" style="left: 75%; animation-duration: 10s;">❄️</span>
+        <span class="snowflake" style="left: 90%; animation-duration: 18s;">❄️</span>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header class="p-8 text-center mt-24">
+        <h1 class="header-text text-6xl">Downloads Natalinos</h1>
+        <p class="text-xl mt-4 text-gray-400">Baixe ferramentas exclusivas com o espírito de Natal!</p>
+    </header>
+
+    <section class="mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-6">
+        <!-- Card 1 (Spotify) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Spotify" alt="Spotify Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Gerador de Link Spotify</h3>
+            <p class="mt-2 text-gray-300 text-center">Gere links funcionais para o Spotify com facilidade.</p>
+            <a href="arquivos/spotify links.rar" class="download-button mt-6 hover:shadow-lg hover:brightness-125">Baixar</a>
+        </div>
+    
+        <!-- Card 2 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Ferramenta" alt="Tool Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+            <p id="countdown" class="mt-4 text-xl font-semibold text-red-500">Carregando...</p>
+        </div>
+    
+        <!-- Card 3 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Especial" alt="Special Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+        </div>
+    
+        <!-- Card 4 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Jogo" alt="Game Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+        </div>
+    
+        <!-- Card 5 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Tema" alt="Theme Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+        </div>
+    
+        <!-- Card 6 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Música" alt="Music Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+        </div>
+    
+        <!-- Card 7 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Wallpaper" alt="Wallpaper Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+        </div>
+    
+        <!-- Card 8 (Em Breve) -->
+        <div class="download-card flex flex-col items-center">
+            <img src="https://via.placeholder.com/100x100.png?text=Ebook" alt="Ebook Icon" class="w-16 h-16 mb-4">
+            <h3 class="text-2xl font-semibold">Em Breve</h3>
+            <p class="mt-2 text-gray-300 text-center">A ferramenta será lançada em breve!</p>
+        </div>
+    </section>
+    
+    <script>
+        // Defina a data de lançamento da ferramenta 2 (24 horas a partir de agora)
+        const countdownDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+    
+        const countdownElement = document.getElementById('countdown');
+    
+        // Atualize a contagem regressiva a cada 1 segundo
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+    
+            // Calcule o tempo restante em dias, horas, minutos e segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+            // Exiba o tempo restante no formato: Dias:Horas:Minutos:Segundos
+            countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    
+            // Se a contagem regressiva terminar, mostre a mensagem de que a ferramenta está disponível
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                countdownElement.innerHTML = "A ferramenta está disponível!";
+            }
+        }, 1000);
+    </script>
+    
+
+    <footer class="text-center mt-32 py-6 bg-gray-800">
+        <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
